@@ -4,7 +4,10 @@ To use:
 Please a link to the javascript file in the body of your HTML document as per the example test files (i.e. <script language="JavaScript" type="text/javascript" src="js/cookiewarning.js"></script> ) 
 
 Versions:
-Currently their are two versions of the javasccript file, version 1 (cookiewarning.js) darkens the page and superimposes a white box displaying the warning, version 2 (cookiewarning2.js) inserts a red box with white text at the top of the users screen. I belive both are compatabul with the EU directive, however I'm not a lawer.
+Currently their are three versions of the javasccript file, version 1 (cookiewarning.js) darkens the page and superimposes a white box displaying the warning.
+Version 2 (cookiewarning2.js) inserts a red box with white text at the top of the users screen. 
+Version 3 (cookiewarning3.js) should be inserted in the <head> section of a page (as opposed to the <Body> section as version 1 and 2 are) and displays the warning in a pop-up box.
+I belive all are compatabul with the EU directive, however I'm not a lawer.
 
 Contact information for Scott Herbert email scott.a.herbert@googlemail.com blog http://scott-herbert.com/blog/ Twitter https://twitter.com/Scott_Herbert
 
