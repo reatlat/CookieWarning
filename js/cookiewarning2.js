@@ -3,11 +3,9 @@
 // Author Scott Herbert (www.scott-herbert.com)
 //
 // Version History 
-// 1 (19-June-2011) Inital release on to Google code.
+// 1 (10-Feb-2013) Inital release on to GitHub.
 //
-//
-//
-
+// Download from http://adf.ly/IvElY
 
 function getCookie(c_name)
 {

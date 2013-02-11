@@ -4,10 +4,9 @@
 //
 // Version History 
 // 1 (19-June-2011) Inital release on to Google code.
+// 1.1 (10-Feb-2013) Released to GitHub
 //
-//
-//
-
+// Download from http://adf.ly/IvElY
 
 function getCookie(c_name)
 {
