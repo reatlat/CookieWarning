@@ -41,19 +41,14 @@ function displayNotification() {
     // this is the message displayed to the user.
     message = message + "In order for this site to work correctly, and for us to improve the site we need to store a small file (called a cookie) on your computer.<br/> Most every site in the world does this, however it seems that now, by law, we have to get your permission first.<br/> If you click agree below we will store all needed cookies and you'll notice no diffence, if you click on I don't agree (and while you don't click on I agree) we will not store cookies other than the strictly necessary ones. But in that case you will not be able to post comments, see and use social buttons, etc.<br/>";
 
-
     // Displays the I agree/disagree buttons.
     // Feel free to change the address of the I disagree redirection to either a non-cookie site or a Google or the ICO web site 
     message = message + "<br /><INPUT TYPE='button' VALUE='I Agree' onClick='JavaScript:doAccept();' /> <INPUT TYPE='button' VALUE=\"I don't agree\" onClick='JavaScript:doNotAccept();' />";
 
-
     // and this closes everything off.
     message = message + "</div></div>";
 
-
     document.writeln(message);
-
-
 }
 
 function doAccept() {
@@ -70,11 +65,7 @@ function setCookie(c_name, value, exdays) {
     var exdate = new Date();
     exdate.setDate(exdate.getDate() + exdays);
     var c_value = escape(value) + ((exdays == null) ? "" : "; expires=" + exdate.toUTCString() + "; path=/");
-    document.cookie = c_name + "=" + c_value;
-
-    // set cookiewarning to hidden.
-    var cw = document.getElementById("cookiewarning");
-    cw.innerHTML = "";
+    document.cookie = c_name + "=" + c_value;    
 }
 
 function checkCookie() {
