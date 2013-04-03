@@ -1,6 +1,7 @@
 /////////////////////////////////////////////////////////////
 //
 // Author Scott Herbert (www.scott-herbert.com)
+//		  Dimitri Kourkoulis (http://dimitros.net/en/home)
 //
 // Version History 
 // 1 (10-Feb-2013) Inital release on to GitHub.
@@ -14,7 +15,11 @@
 //    An example of how this has been used in one case on the Umbraco
 //    CMS can be found here: 
 //    http://dimitros.net/en/blog/complyingwiththecookielaw    
-//
+// 
+// 3 (03-April-2013) SAH - Added a variable that allows the developer to 
+//	  select if the script redirects (as it originally did) or carry’s
+//    on (as per Dimitri’s great addition).
+// 
 // Download from http://adf.ly/IvElY
 
 function getCookie(c_name) {
@@ -30,7 +35,7 @@ function getCookie(c_name) {
 }
 
 
-function displayNotification() {
+function displayNotification(c_action) {
 
     // this sets the page background to semi-transparent black should work with all browsers
     var message = "<div id='cookiewarning' >";
@@ -43,7 +48,9 @@ function displayNotification() {
 
     // Displays the I agree/disagree buttons.
     // Feel free to change the address of the I disagree redirection to either a non-cookie site or a Google or the ICO web site 
-    message = message + "<br /><INPUT TYPE='button' VALUE='I Agree' onClick='JavaScript:doAccept();' /> <INPUT TYPE='button' VALUE=\"I don't agree\" onClick='JavaScript:doNotAccept();' />";
+    message = message + "<br /><INPUT TYPE='button' VALUE='I Agree' onClick='JavaScript:doAccept();' /> <INPUT TYPE='button' VALUE=\"I don't agree\" onClick='JavaScript:doNotAccept("
+	message = message + c_action;
+	message = message + ");' />";
 
     // and this closes everything off.
     message = message + "</div></div>";
@@ -56,9 +63,14 @@ function doAccept() {
     location.reload(true);
 }
 
-function doNotAccept() {
-    setCookie("jsNoCookieCheck", null, 365);
-    location.reload(true);
+function doNotAccept(c_action) {
+
+	if (c_action == 1) {
+		setCookie("jsNoCookieCheck", null, 365);
+		location.reload(true);
+	} else {
+		window.location.replace("https://www.google.com/");
+	}
 }
 
 function setCookie(c_name, value, exdays) {
@@ -68,7 +80,7 @@ function setCookie(c_name, value, exdays) {
     document.cookie = c_name + "=" + c_value;    
 }
 
-function checkCookie() {
+function checkCookie(c_action) {
 
     var cookieName = "jsCookieCheck";
     var cookieNameNo = "jsNoCookieCheck";
@@ -88,8 +100,11 @@ function checkCookie() {
     }
     else {
         // No cookie exists, so display the lightbox effect notification.
-        displayNotification();
+        displayNotification(c_action);
     }
 }
 
-checkCookie();
+// blockOrCarryOn - 1 = Carry on, store a do not store cookies cookie and carry on
+//					0 = Block, redirect the user to a different website (google for example)
+var blockOrCarryOn = 1;
+checkCookie(blockOrCarryOn);
