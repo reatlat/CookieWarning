@@ -4,10 +4,14 @@ To use:
 Please a link to the javascript file in the body of your HTML document as per the example test files (i.e. <script language="JavaScript" type="text/javascript" src="js/cookiewarning.js"></script> ) 
 
 Versions:
-Currently their are three versions of the javasccript file, version 1 (cookiewarning.js) darkens the page and superimposes a white box displaying the warning.
+Currently their are four versions of the javascript file, 
+version 1 (cookiewarning.js) darkens the page and superimposes a white box displaying the warning.
 Version 2 (cookiewarning2.js) inserts a red box with white text at the top of the users screen. 
 Version 3 (cookiewarning3.js) should be inserted in the <head> section of a page (as opposed to the <Body> section as version 1 and 2 are) and displays the warning in a pop-up box.
-Version 4 (cookiewarning4.js) Allows the developer to choose if the script redirects the user or allows them to carry on.
+Version 4 (cookiewarning4.js) inserts a white header at the top of the page.
+
+All four versions permit the developer to set a flag which, if the users doesn't allow cookies, either sets a "do not track" cookie or redirects the user to a third party site (aka google.com).
+
 I belive all are compatabul with the EU directive, however I'm not a lawer.
 
 Contact information for Scott Herbert email scott.a.herbert@googlemail.com blog http://scott-herbert.com/blog/ Twitter https://twitter.com/Scott_Herbert
@@ -17,6 +21,7 @@ A big thanks to Dimitri Kourkoulis (https://twitter.com/dimitrikourk and http://
 If you would like to donate please do so via paypal at http://bit.ly/XHnk3a
 Or Flattr https://flattr.com/donation/give/to/scott-herbert
 Or buy me something from my amazon wish list at http://amzn.to/SRxBMj
+Or send some bitcoins to 1AYRuymjWdcANbHzi3LUX6ymhxW8MvFwKk
 Or Donate to wikipedia via http://bit.ly/UHU7Um
 
 Public key 

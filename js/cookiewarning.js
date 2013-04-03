@@ -39,16 +39,29 @@ message = message + "In order for this site to work correctly, and for us to imp
 	
 // Displays the I agree/disagree buttons.
 // Feel free to change the address of the I disagree redirection to either a non-cookie site or a Google or the ICO web site 
-message = message + "<INPUT TYPE='button' VALUE='I Agree' onClick='JavaScript:setCookie(\"jsCookieCheck\",null,365);' /> <INPUT TYPE='button' VALUE=\"I don't agree\" onClick='JavaScript:window.location = \"http://www.google.com/\"' />";
-
+    message = message + "<br /><INPUT TYPE='button' VALUE='I Agree' onClick='JavaScript:doAccept();' /> <INPUT TYPE='button' VALUE=\"I don't agree\" onClick='JavaScript:doNotAccept("
+	message = message + c_action;
+	message = message + ");' />";
 	
 // and this closes everything off.
-message = message + "</div></div></div>";
-
+message = message + "</div></div>";
 
 document.writeln(message);
+}
 
+function doAccept() {
+    setCookie("jsCookieCheck", null, 365);
+    location.reload(true);
+}
 
+function doNotAccept(c_action) {
+
+	if (c_action == 1) {
+		setCookie("jsNoCookieCheck", null, 365);
+		location.reload(true);
+	} else {
+		window.location.replace("https://www.google.com/");
+	}
 }
 
 function setCookie(c_name,value,exdays)
@@ -63,24 +76,32 @@ var cw = document.getElementById("cookiewarning");
 cw.innerHTML = "";
 }
 
-function checkCookie()
-{
+function checkCookie(c_action) {
 
-var cookieName="jsCookieCheck";
-var cookieChk=getCookie(cookieName);
-if (cookieChk!=null && cookieChk!="")
-  {
-  // the jsCookieCheck cookie exists so we can assume the person has read the notification
-  // within the last year
-  
-  setCookie(cookieName,cookieChk,365);	// set the cookie to expire in a year.
-  }
-else 
-  {
-  // No cookie exists, so display the lightbox effect notification.
-  displayNotification();	
-  }
+    var cookieName = "jsCookieCheck";
+    var cookieNameNo = "jsNoCookieCheck";
+    var cookieChk = getCookie(cookieName);
+    var cookieChkNo = getCookie(cookieNameNo);
+    if (cookieChk != null && cookieChk != "") {
+        // the jsCookieCheck cookie exists so we can assume the person has read the notification
+        // within the last year and has accepted the use of cookies
+
+        setCookie(cookieName, cookieChk, 365); // set the cookie to expire in a year.
+    }
+    else if (cookieChkNo != null && cookieChkNo != "") {
+        // the jsNoCookieCheck cookie exists so we can assume the person has read the notification
+        // within the last year and has declined the use of cookies
+
+        setCookie(cookieNameNo, cookieChkNo, 365); // set the cookie to expire in a year.
+    }
+    else {
+        // No cookie exists, so display the lightbox effect notification.
+        displayNotification(c_action);
+    }
 }
 
-checkCookie();
+// blockOrCarryOn - 1 = Carry on, store a do not store cookies cookie and carry on
+//					0 = Block, redirect the user to a different website (google for example)
+var blockOrCarryOn = 1;
+checkCookie(blockOrCarryOn);
 
